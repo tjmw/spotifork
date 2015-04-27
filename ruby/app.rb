@@ -1,6 +1,8 @@
 require 'sinatra/base'
 require 'rss'
 require 'open-uri'
+require 'dalli'
+require 'rack-cache'
 
 class App < Sinatra::Base
   BEST_NEW_TRACKS_RSS   = 'http://pitchfork.com/rss/reviews/best/tracks/'.freeze
@@ -26,6 +28,10 @@ class App < Sinatra::Base
     def best_new_reissues
       read_rss(BEST_NEW_REISSUES_RSS)
     end
+
+    def cache_headers
+      cache_control :public, max_age: 3600
+    end
   end
 
   get '/' do
@@ -33,14 +39,17 @@ class App < Sinatra::Base
   end
 
   get '/tracks' do
+    cache_headers
     erb :tracks
   end
 
   get '/albums' do
+    cache_headers
     erb :albums
   end
 
   get '/reissues' do
+    cache_headers
     erb :reissues
   end
 end
