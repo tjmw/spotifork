@@ -1,4 +1,4 @@
-# Sinatra/Docker Compose Experiment
+# Spotifork
 
 ## Running the app
 
