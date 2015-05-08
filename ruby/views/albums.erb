@@ -1,5 +1,5 @@
 <h1>Best New Albums</h1>
 
 <% best_new_albums.each do |album| %>
-  <div><%= album.title %></div>
+  <div><a href="<%= album.uri %>"><%= album.artist_and_title %></a></div>
 <% end %>

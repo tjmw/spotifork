@@ -3,6 +3,8 @@ require 'rss'
 require 'open-uri'
 require 'dalli'
 require 'rack-cache'
+require 'rspotify'
+require_relative 'lib/album_presenter'
 
 class App < Sinatra::Base
   BEST_NEW_TRACKS_RSS   = 'http://pitchfork.com/rss/reviews/best/tracks/'.freeze
@@ -22,11 +24,19 @@ class App < Sinatra::Base
     end
 
     def best_new_albums
-      read_rss(BEST_NEW_ALBUMS_RSS)
+      read_rss(BEST_NEW_ALBUMS_RSS).map {|album|
+        RSpotify::Album.search(album.title.gsub(/:/, ''), market: 'GB').first
+      }.compact.map {|album|
+        AlbumPresenter.new(album)
+      }
     end
 
     def best_new_reissues
-      read_rss(BEST_NEW_REISSUES_RSS)
+      read_rss(BEST_NEW_REISSUES_RSS).map {|album|
+        RSpotify::Album.search(album.title.gsub(/:/, ''), market: 'GB').first
+      }.compact.map {|album|
+        AlbumPresenter.new(album)
+      }
     end
 
     def cache_headers
