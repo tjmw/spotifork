@@ -9,6 +9,7 @@ GEM
     hashie (3.4.1)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    jsmin (1.0.1)
     jwt (1.4.1)
     mime-types (2.5)
     multi_json (1.11.0)
@@ -34,6 +35,8 @@ GEM
       rack (>= 0.4)
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -41,11 +44,17 @@ GEM
     rspotify (1.13.0)
       omniauth-oauth2 (~> 1.1)
       rest-client (~> 1.7)
+    sass (3.4.13)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
-    tilt (2.0.1)
+    sinatra-assetpack (0.3.1)
+      jsmin
+      rack-test
+      sinatra
+      tilt (>= 1.3.0)
+    tilt (1.4.1)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
@@ -59,4 +68,7 @@ DEPENDENCIES
   rack
   rack-cache
   rspotify
+  sass
   sinatra
+  sinatra-assetpack
+  tilt (~> 1.4.1)
