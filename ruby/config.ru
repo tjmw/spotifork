@@ -1,5 +1,7 @@
 require './app'
 
+Encoding.default_external = 'utf-8'
+
 # TODO: actually pull this from the env
 ENV['MEMCACHE_SERVERS'] = 'memcached'
 
