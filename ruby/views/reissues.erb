@@ -1,5 +1,3 @@
 <h1>Best New Reissues</h1>
 
-<% best_new_reissues.each do |album| %>
-  <div><a href="<%= album.uri %>"><%= album.artist_and_title %></a></div>
-<% end %>
+<%= erb :album_link_list, locals: { albums: best_new_reissues } %>

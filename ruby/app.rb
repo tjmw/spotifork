@@ -18,20 +18,8 @@ class App < Sinatra::Base
       end
     end
 
-    def best_new_tracks
-      read_rss(BEST_NEW_TRACKS_RSS)
-    end
-
-    def best_new_albums
-      read_rss(BEST_NEW_ALBUMS_RSS).map {|album|
-        RSpotify::Album.search(album.title.gsub(/:/, ''), market: 'GB').first
-      }.compact.map {|album|
-        AlbumPresenter.new(album)
-      }
-    end
-
-    def best_new_reissues
-      read_rss(BEST_NEW_REISSUES_RSS).map {|album|
+    def albums_for(rss_feed)
+      read_rss(rss_feed).map {|album|
         RSpotify::Album.search(album.title.gsub(/:/, ''), market: 'GB').first
       }.compact.map {|album|
         AlbumPresenter.new(album)
@@ -49,11 +37,11 @@ class App < Sinatra::Base
 
   get '/albums' do
     cache_headers
-    erb :albums
+    erb :albums, locals: { best_new_albums: albums_for(BEST_NEW_ALBUMS_RSS) }
   end
 
   get '/reissues' do
     cache_headers
-    erb :reissues
+    erb :reissues, locals: { best_new_reissues: albums_for(BEST_NEW_REISSUES_RSS) }
   end
 end
