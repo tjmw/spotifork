@@ -16,7 +16,12 @@ class App < Sinatra::Base
 
   assets do
     css :application, [
-      '/css/*.css',
+      '/css/normalize.css',
+      '/css/global.css',
+      '/css/fonts.css',
+      '/css/navigation.css',
+      '/css/main.css',
+      '/css/album-link-list.css'
     ]
 
     css_compression :sass
