@@ -15,6 +15,7 @@ web:
     - memcached:memcached
   environment:
     MEMCACHE_SERVERS: memcached
+    RACK_ENV: production
 
 memcached:
   build: ./memcached

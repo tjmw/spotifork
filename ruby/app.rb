@@ -1,12 +1,32 @@
 require 'sinatra/base'
+require 'sinatra/assetpack'
 require 'rss'
 require 'open-uri'
 require 'dalli'
 require 'rack-cache'
 require 'rspotify'
+require 'erb'
+require 'sass'
 require_relative 'lib/album_presenter'
 
 class App < Sinatra::Base
+  set :root, File.dirname(__FILE__)
+
+  register Sinatra::AssetPack
+
+  assets do
+    css :application, [
+      '/css/normalize.css',
+      '/css/global.css',
+      '/css/fonts.css',
+      '/css/navigation.css',
+      '/css/main.css',
+      '/css/album-link-list.css'
+    ]
+
+    css_compression :sass
+  end
+
   BEST_NEW_ALBUMS_RSS   = 'http://pitchfork.com/rss/reviews/best/albums/'.freeze
   BEST_NEW_REISSUES_RSS = 'http://pitchfork.com/rss/reviews/best/reissues/'.freeze
 

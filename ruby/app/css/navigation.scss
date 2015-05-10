@@ -1,0 +1,30 @@
+$nav-background: #2D2D2D;
+$nav-text: #ECECEC;
+$home-colour: #00AC81;
+
+.navigation {
+  background-color: $nav-background;
+
+  &-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    a {
+      color: $nav-text;
+      font-family: Raleway;
+      font-size: 1.5em;
+    }
+  }
+
+  &-item {
+    display: inline-block;
+    margin: 0.5em;
+
+    &-home {
+      a {
+        color: $home-colour;
+      }
+    }
+  }
+}

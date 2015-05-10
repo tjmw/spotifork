@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <%= css :application %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navigation">
+        <ul class="navigation-links">
+          <li class="navigation-item navigation-item-home"><a href="/">Spotifork</a></li>
+          <li class="navigation-item"><a href="/albums">Best New Albums</a></li>
+          <li class="navigation-item"><a href="/reissues">Best New Reissues</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <%= yield %>
+    </main>
+  </body>
+</html>
