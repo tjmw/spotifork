@@ -47,7 +47,7 @@ class App < Sinatra::Base
     end
 
     def cache_headers
-      cache_control :public, max_age: 3600
+      cache_control :public, max_age: 14400
     end
   end
 
