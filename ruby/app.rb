@@ -16,7 +16,7 @@ class App < Sinatra::Base
 
   assets do
     css :application, [
-      '/css/screen.css'
+      '/css/*.css',
     ]
 
     css_compression :sass

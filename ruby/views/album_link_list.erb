@@ -1,5 +1,5 @@
-<ul>
+<ul class="album-link-list">
   <% albums.each do |album| %>
-    <li><a href="<%= album.uri %>"><%= album.artist_and_title %></a></li>
+    <li class="album-link-list-item"><a href="<%= album.uri %>"><%= album.artist_and_title %></a></li>
   <% end %>
 </ul>
